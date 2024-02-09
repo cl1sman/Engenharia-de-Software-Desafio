@@ -12,8 +12,8 @@ from googleapiclient.errors import HttpError
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 # The ID and range of a sample spreadsheet.
-SAMPLE_SPREADSHEET_ID = "15QBvEHYq8K_rDIYoE9ZCfolb1i-gnOkfk1sMkQtlV-E"
-SAMPLE_RANGE_NAME = "engenharia_de_software!A4:H27"
+SPREADSHEET_ID = "15QBvEHYq8K_rDIYoE9ZCfolb1i-gnOkfk1sMkQtlV-E"
+RANGE_NAME = "engenharia_de_software!A4:H27"
 
 
 def main():
@@ -42,7 +42,7 @@ def main():
     sheet = service.spreadsheets()
     result = (
         sheet.values()
-        .get(spreadsheetId=SAMPLE_SPREADSHEET_ID, range=SAMPLE_RANGE_NAME)
+        .get(spreadsheetId=SPREADSHEET_ID, range=RANGE_NAME)
         .execute()
     )
 
@@ -85,7 +85,7 @@ def main():
     
     result = (
         sheet.values()
-        .update(spreadsheetId=SAMPLE_SPREADSHEET_ID, range='A4:H27', valueInputOption='USER_ENTERED',
+        .update(spreadsheetId=SPREADSHEET_ID, range='A4:H27', valueInputOption='USER_ENTERED',
                body={'values': temp_table})
         .execute()
     )
